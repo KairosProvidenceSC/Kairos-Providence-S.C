@@ -4,13 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kairos Providence, S.C. | Firma Jurídica</title>
-    <!-- Google Fonts para tipografía de prestigio -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     
     <style>
-        /* Variables de Identidad Visual (Dorado, Marfil, Negro) */
         :root {
             --bg-dark: #0F0F11;
             --bg-card: #18181C;
@@ -36,7 +35,7 @@
             overflow-x: hidden;
         }
 
-        /* Encabezado / Navegación */
+        /* Header */
         header {
             display: flex;
             justify-content: space-between;
@@ -79,7 +78,7 @@
             color: var(--gold);
         }
 
-        /* Sección Hero (Portada) */
+        /* Hero */
         .hero {
             height: 100vh;
             display: flex;
@@ -132,7 +131,7 @@
             color: var(--bg-dark);
         }
 
-        /* Secciones Generales */
+        /* Secciones */
         section {
             padding: 100px 8%;
         }
@@ -153,7 +152,7 @@
             font-size: 0.9rem;
         }
 
-        /* Sección Misión y Visión */
+        /* Misión y Visión */
         .mv-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -189,7 +188,7 @@
             text-align: justify;
         }
 
-        /* Grilla de Áreas de Práctica */
+        /* Áreas de Práctica con interacción Clic */
         .grid-practices {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -200,15 +199,15 @@
             background-color: var(--bg-card);
             padding: 35px 25px;
             border-top: 2px solid var(--gold);
-            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-            position: relative;
+            transition: all 0.4s ease;
             cursor: pointer;
+            position: relative;
+            user-select: none;
         }
 
         .card-practice:hover {
-            transform: translateY(-8px);
-            background-color: #202026;
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.6);
+            background-color: #1F1F24;
+            transform: translateY(-4px);
         }
 
         .card-practice h3 {
@@ -224,39 +223,62 @@
             font-weight: 300;
         }
 
-        /* ESTADO INICIAL: Oculto por completo */
+        /* Indicador de interacción (Ver especialista) */
+        .click-hint {
+            display: block;
+            margin-top: 15px;
+            font-size: 0.75rem;
+            color: var(--gold);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 600;
+            transition: opacity 0.3s;
+        }
+
+        /* Información oculta por defecto */
         .specialist-info {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
             margin-top: 0;
             padding-top: 0;
             border-top: 1px solid transparent;
-            opacity: 0;
-            max-height: 0;
-            overflow: hidden;
-            transition: all 0.4s ease;
+            transition: all 0.5s cubic-bezier(0, 1, 0, 1);
         }
 
-        /* ESTADO EN HOVER: Se muestra al colocar el cursor */
-        .card-practice:hover .specialist-info {
+        /* Clase activa al hacer CLIC */
+        .card-practice.active {
+            border-top-color: var(--gold-hover);
+            background-color: #222228;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+        }
+
+        .card-practice.active .specialist-info {
+            max-height: 200px;
+            opacity: 1;
             margin-top: 20px;
             padding-top: 15px;
             border-top-color: rgba(197, 160, 89, 0.3);
-            opacity: 1;
-            max-height: 150px;
+            transition: all 0.5s ease-in-out;
+        }
+
+        .card-practice.active .click-hint {
+            content: "Ocultar especialista";
         }
 
         .specialist-info strong {
             color: var(--gold);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
         }
 
         .specialist-info a {
             color: var(--ivory);
             text-decoration: none;
-            font-size: 0.8rem;
+            font-size: 0.82rem;
             display: block;
-            margin-top: 3px;
+            margin-top: 5px;
             transition: color 0.3s;
         }
 
@@ -264,7 +286,7 @@
             color: var(--gold-hover);
         }
 
-        /* Sección Nosotros / Pilares */
+        /* Nosotros / Pilares */
         .about-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -299,7 +321,7 @@
             color: var(--gold);
         }
 
-        /* Pie de Página */
+        /* Footer */
         footer {
             background-color: #08080A;
             text-align: center;
@@ -315,11 +337,17 @@
             font-size: 1.2rem;
             margin-bottom: 10px;
         }
+
+        @media (max-width: 768px) {
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <!-- Encabezado / Navegación -->
+    <!-- Encabezado -->
     <header>
         <div class="logo">
             Kairos Providence
@@ -333,7 +361,7 @@
         </nav>
     </header>
 
-    <!-- Sección Principal (Hero) -->
+    <!-- Hero -->
     <section class="hero">
         <h1>Kairos Providence, S.C.</h1>
         <p class="tagline">Propósito &bull; Paciencia &bull; Estrategia &bull; Justicia</p>
@@ -343,7 +371,7 @@
         <a href="#contacto" class="btn-gold">Consulta Institucional</a>
     </section>
 
-    <!-- Sección Misión y Visión -->
+    <!-- Misión y Visión -->
     <section id="filosofia">
         <h2 class="section-title">Nuestra Filosofía</h2>
         <p class="section-subtitle">Los fundamentos institucionales que orientan el ejercicio profesional de nuestra firma.</p>
@@ -364,70 +392,75 @@
         </div>
     </section>
 
-    <!-- Sección Áreas de Práctica -->
+    <!-- Áreas de Práctica -->
     <section id="practicas" style="background-color: #121215;">
         <h2 class="section-title">Áreas de Práctica</h2>
-        <p class="section-subtitle">Especialización jurídica orientada a la oportunidad procesal y el blindaje institucional.</p>
+        <p class="section-subtitle">Haz clic en cada área para consultar al especialista titular.</p>
 
         <div class="grid-practices">
             <!-- Derecho Corporativo -->
-            <div class="card-practice">
+            <div class="card-practice" onclick="toggleCard(this)">
                 <h3>Derecho Corporativo</h3>
                 <p>Blindaje institucional, gobierno corporativo, estructuración de negocios y auditoría contractual estratégica.</p>
+                <span class="click-hint">&#9656; Clic para ver datos del Licenciado</span>
                 <div class="specialist-info">
                     <strong>Lic. Moisés García Carrillo</strong>
-                    <a href="tel:7223901387">Tel: 722 390 1387</a>
-                    <a href="mailto:moisesgarciacarrillo0@gmail.com">moisesgarciacarrillo0@gmail.com</a>
+                    <a href="tel:7223901387" onclick="event.stopPropagation();">Tel: 722 390 1387</a>
+                    <a href="mailto:moisesgarciacarrillo0@gmail.com" onclick="event.stopPropagation();">moisesgarciacarrillo0@gmail.com</a>
                 </div>
             </div>
 
             <!-- Derecho Laboral -->
-            <div class="card-practice">
+            <div class="card-practice" onclick="toggleCard(this)">
                 <h3>Derecho Laboral</h3>
                 <p>Prevención de contingencias patronales, contratos ejecutivos, gestión de relaciones de trabajo y litigio laboral.</p>
+                <span class="click-hint">&#9656; Clic para ver datos de la Licenciada</span>
                 <div class="specialist-info">
                     <strong>Lic. Cesia Jemima Marin Urbina</strong>
-                    <a href="tel:7224953348">Tel: 722 495 3348</a>
-                    <a href="mailto:cesiamarin01@gmail.com">cesiamarin01@gmail.com</a>
+                    <a href="tel:7224953348" onclick="event.stopPropagation();">Tel: 722 495 3348</a>
+                    <a href="mailto:cesiamarin01@gmail.com" onclick="event.stopPropagation();">cesiamarin01@gmail.com</a>
                 </div>
             </div>
 
             <!-- Derecho Bursátil -->
-            <div class="card-practice">
+            <div class="card-practice" onclick="toggleCard(this)">
                 <h3>Derecho Bursátil</h3>
                 <p>Cumplimiento regulatorio, instrumentos de financiamiento y asesoría integral ante autoridades del sector financiero.</p>
+                <span class="click-hint">&#9656; Clic para ver datos de la Licenciada</span>
                 <div class="specialist-info">
                     <strong>Lic. Karina Peña Gonzales</strong>
-                    <a href="tel:+527224719832">Tel: +52 722 471 9832</a>
-                    <a href="mailto:karinapena319@gmail.com">karinapena319@gmail.com</a>
+                    <a href="tel:+527224719832" onclick="event.stopPropagation();">Tel: +52 722 471 9832</a>
+                    <a href="mailto:karinapena319@gmail.com" onclick="event.stopPropagation();">karinapena319@gmail.com</a>
                 </div>
             </div>
 
             <!-- Derecho Penal -->
-            <div class="card-practice">
+            <div class="card-practice" onclick="toggleCard(this)">
                 <h3>Derecho Penal</h3>
                 <p>Defensa técnica y patrocinio de víctimas en el sistema acusatorio con rigor procesal y estricta confidencialidad.</p>
+                <span class="click-hint">&#9656; Clic para ver datos del Licenciado</span>
                 <div class="specialist-info">
                     <strong>Lic. Pablo Juárez Sánchez</strong>
-                    <a href="tel:5513998402">Tel: 55 1399 8402</a>
-                    <a href="mailto:pablooo7c@gmail.com">pablooo7c@gmail.com</a>
+                    <a href="tel:5513998402" onclick="event.stopPropagation();">Tel: 55 1399 8402</a>
+                    <a href="mailto:pablooo7c@gmail.com" onclick="event.stopPropagation();">pablooo7c@gmail.com</a>
                 </div>
             </div>
 
             <!-- Derecho Familiar -->
-            <div class="card-practice">
+            <div class="card-practice" onclick="toggleCard(this)">
                 <h3>Derecho Familiar</h3>
                 <p>Protección del patrimonio personal, sucesiones y resolución discreta de controversias familiares complejas.</p>
+                <span class="click-hint">&#9656; Clic para ver datos de la Licenciada</span>
                 <div class="specialist-info">
                     <strong>Lic. Cinthya Yaretzi Delgado Rosales</strong>
-                    <a href="tel:7228833150">Tel: 722 883 3150</a>
-                    <a href="mailto:cinthya.yaretzi.delgado@gmail.com">cinthya.yaretzi.delgado@gmail.com</a>
+                    <a href="tel:7228833150" onclick="event.stopPropagation();">Tel: 722 883 3150</a>
+                    <a href="mailto:cinthya.yaretzi.delgado@gmail.com" onclick="event.stopPropagation();">cinthya.yaretzi.delgado@gmail.com</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Sección La Firma / Pilares -->
+    <!-- La Firma / Pilares -->
     <section id="firma">
         <div class="about-container">
             <div class="about-text">
@@ -450,11 +483,11 @@
         </div>
     </section>
 
-    <!-- Pie de Página -->
+    <!-- Footer -->
     <footer id="contacto">
         <p class="footer-logo">KAIROS PROVIDENCE, S.C.</p>
         <p>Servicios Profesionales de Asesoría y Representación Jurídica</p>
-        <p class="footer-address" style="margin-top: 8px;">Sor Juana Inés de La Cruz 329, San Mateo, C.P. 52149 Metepec, Méx.</p>
+        <p style="margin-top: 8px;">Sor Juana Inés de La Cruz 329, San Mateo, C.P. 52149 Metepec, Méx.</p>
         <p style="margin-top: 5px;">
             Tel: <a href="tel:7223901387" style="color: var(--text-muted); text-decoration: none;">722 390 1387</a> | 
             <a href="mailto:Kairosprovidencesc@gmail.com" style="color: var(--gold); text-decoration: none;">Kairosprovidencesc@gmail.com</a>
@@ -462,5 +495,25 @@
         <p style="margin-top: 15px; color: #666;">&copy; 2026 Kairos Providence, S.C. Todos los derechos reservados.</p>
     </footer>
 
+    <!-- Script de Interacción -->
+    <script>
+        function toggleCard(card) {
+            const isActive = card.classList.contains('active');
+            
+            // Opcional: Cerrar otras tarjetas abiertas
+            document.querySelectorAll('.card-practice').forEach(c => {
+                c.classList.remove('active');
+                const hint = c.querySelector('.click-hint');
+                if (hint) hint.innerHTML = '&#9656; Clic para ver datos del Especialista';
+            });
+
+            // Abrir la tarjeta actual si no estaba activa
+            if (!isActive) {
+                card.classList.add('active');
+                const hint = card.querySelector('.click-hint');
+                if (hint) hint.innerHTML = '&#9662; Ocultar datos';
+            }
+        }
+    </script>
 </body>
 </html>
