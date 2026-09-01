@@ -188,18 +188,18 @@
             text-align: justify;
         }
 
-        /* Grilla de Áreas de Práctica (2 Columnas Estándar) */
+        /* Grilla de Áreas de Práctica (4 Columnas en la 1ra fila) */
         .grid-practices {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
-            max-width: 1000px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            max-width: 1280px;
             margin: 0 auto;
         }
 
         .card-practice {
             background-color: var(--bg-card);
-            padding: 35px 25px;
+            padding: 30px 20px;
             border-top: 2px solid var(--gold);
             transition: all 0.4s ease;
             cursor: pointer;
@@ -207,12 +207,9 @@
             user-select: none;
         }
 
-        /* Exclusivo para la quinta tarjeta: Derecho Familiar centrado */
+        /* Derecho Familiar: Ocupa las columnas centrales en la segunda fila */
         .card-practice.card-centered {
-            grid-column: 1 / -1;
-            justify-self: center;
-            width: 100%;
-            max-width: 487px; /* Mismo ancho estándar que las de arriba */
+            grid-column: 2 / span 2;
         }
 
         .card-practice:hover {
@@ -224,7 +221,7 @@
             font-family: var(--font-title);
             color: var(--ivory);
             margin-bottom: 15px;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
         }
 
         .card-practice p {
@@ -237,7 +234,7 @@
         .click-hint {
             display: block;
             margin-top: 15px;
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             color: var(--gold);
             letter-spacing: 1px;
             text-transform: uppercase;
@@ -344,13 +341,21 @@
             margin-bottom: 10px;
         }
 
-        /* Adaptación para pantallas pequeñas */
-        @media (max-width: 768px) {
+        /* Adaptación responsiva para celulares y tablets */
+        @media (max-width: 1024px) {
             .grid-practices {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
             }
             .card-practice.card-centered {
-                max-width: 100%;
+                grid-column: 1 / -1;
+                justify-self: center;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .grid-practices {
+                grid-template-columns: 1fr;
             }
             .about-container {
                 grid-template-columns: 1fr;
@@ -411,7 +416,7 @@
         <p class="section-subtitle">Haz clic en cada área para consultar al especialista titular.</p>
 
         <div class="grid-practices">
-            <!-- Derecho Corporativo -->
+            <!-- Primera Fila: 4 Áreas -->
             <div class="card-practice" onclick="toggleCard(this)">
                 <h3>Derecho Corporativo</h3>
                 <p>Blindaje institucional, gobierno corporativo, estructuración de negocios y auditoría contractual estratégica.</p>
@@ -423,7 +428,6 @@
                 </div>
             </div>
 
-            <!-- Derecho Laboral -->
             <div class="card-practice" onclick="toggleCard(this)">
                 <h3>Derecho Laboral</h3>
                 <p>Prevención de contingencias patronales, contratos ejecutivos, gestión de relaciones de trabajo y litigio laboral.</p>
@@ -435,7 +439,6 @@
                 </div>
             </div>
 
-            <!-- Derecho Bursátil -->
             <div class="card-practice" onclick="toggleCard(this)">
                 <h3>Derecho Bursátil</h3>
                 <p>Cumplimiento regulatorio, instrumentos de financiamiento y asesoría integral ante autoridades del sector financiero.</p>
@@ -447,7 +450,6 @@
                 </div>
             </div>
 
-            <!-- Derecho Penal -->
             <div class="card-practice" onclick="toggleCard(this)">
                 <h3>Derecho Penal</h3>
                 <p>Defensa técnica y patrocinio de víctimas en el sistema acusatorio con rigor procesal y estricta confidencialidad.</p>
@@ -459,7 +461,7 @@
                 </div>
             </div>
 
-            <!-- Derecho Familiar (Única tarjeta centrada abajo) -->
+            <!-- Segunda Fila: Derecho Familiar centrado en el medio -->
             <div class="card-practice card-centered" onclick="toggleCard(this)">
                 <h3>Derecho Familiar</h3>
                 <p>Protección del patrimonio personal, sucesiones y resolución discreta de controversias familiares complejas.</p>
