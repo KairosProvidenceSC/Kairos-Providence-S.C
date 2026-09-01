@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kairos Providence, S.C. | Firma Jurídica</title>
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
@@ -39,7 +40,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 5%;
+            padding: 20px 8%;
             background-color: rgba(15, 15, 17, 0.95);
             position: fixed;
             width: 100%;
@@ -132,7 +133,7 @@
 
         /* Secciones */
         section {
-            padding: 100px 3%;
+            padding: 100px 8%;
         }
 
         .section-title {
@@ -153,14 +154,12 @@
 
         /* Misión y Visión */
         .mv-container {
-            display: flex;
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
         }
 
         .mv-card {
-            flex: 1;
             background-color: var(--bg-card);
             padding: 40px 30px;
             border-left: 3px solid var(--gold);
@@ -189,33 +188,21 @@
             text-align: justify;
         }
 
-        /* Estructura Flexbox para forzar 4 tarjetas arriba y 1 abajo al centro */
-        .flex-practices {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-            width: 100%;
-            max-width: 1600px;
-            margin: 0 auto;
+        /* Áreas de Práctica con interacción Clic */
+        .grid-practices {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
         }
 
         .card-practice {
-            flex: 1 1 22%; /* Obliga a que quepan 4 tarjetas por fila */
-            min-width: 200px;
             background-color: var(--bg-card);
-            padding: 25px 15px;
+            padding: 35px 25px;
             border-top: 2px solid var(--gold);
             transition: all 0.4s ease;
             cursor: pointer;
             position: relative;
             user-select: none;
-        }
-
-        /* Quinta tarjeta: Centrada abajo */
-        .card-practice.card-centered {
-            flex: 0 1 30%; /* Tamaño medio centrado */
-            min-width: 250px;
         }
 
         .card-practice:hover {
@@ -226,22 +213,21 @@
         .card-practice h3 {
             font-family: var(--font-title);
             color: var(--ivory);
-            margin-bottom: 10px;
-            font-size: 0.95rem;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
         }
 
         .card-practice p {
             color: var(--text-muted);
-            font-size: 0.78rem;
+            font-size: 0.85rem;
             font-weight: 300;
-            line-height: 1.4;
         }
 
-        /* Indicador de interacción */
+        /* Indicador de interacción (Ver especialista) */
         .click-hint {
             display: block;
             margin-top: 15px;
-            font-size: 0.68rem;
+            font-size: 0.75rem;
             color: var(--gold);
             letter-spacing: 1px;
             text-transform: uppercase;
@@ -249,7 +235,7 @@
             transition: opacity 0.3s;
         }
 
-        /* Información oculta */
+        /* Información oculta por defecto */
         .specialist-info {
             max-height: 0;
             opacity: 0;
@@ -260,7 +246,7 @@
             transition: all 0.5s cubic-bezier(0, 1, 0, 1);
         }
 
-        /* Estado activo al hacer clic */
+        /* Clase activa al hacer CLIC */
         .card-practice.active {
             border-top-color: var(--gold-hover);
             background-color: #222228;
@@ -270,25 +256,29 @@
         .card-practice.active .specialist-info {
             max-height: 200px;
             opacity: 1;
-            margin-top: 15px;
-            padding-top: 12px;
+            margin-top: 20px;
+            padding-top: 15px;
             border-top-color: rgba(197, 160, 89, 0.3);
             transition: all 0.5s ease-in-out;
         }
 
+        .card-practice.active .click-hint {
+            content: "Ocultar especialista";
+        }
+
         .specialist-info strong {
             color: var(--gold);
-            font-size: 0.85rem;
+            font-size: 0.95rem;
             display: block;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
         }
 
         .specialist-info a {
             color: var(--ivory);
             text-decoration: none;
-            font-size: 0.75rem;
+            font-size: 0.82rem;
             display: block;
-            margin-top: 4px;
+            margin-top: 5px;
             transition: color 0.3s;
         }
 
@@ -298,15 +288,10 @@
 
         /* Nosotros / Pilares */
         .about-container {
-            display: flex;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             gap: 50px;
             align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .about-text {
-            flex: 1;
         }
 
         .about-text h2 {
@@ -323,7 +308,6 @@
         }
 
         .pilars-list {
-            flex: 1;
             list-style: none;
         }
 
@@ -353,10 +337,17 @@
             font-size: 1.2rem;
             margin-bottom: 10px;
         }
+
+        @media (max-width: 768px) {
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
 
+    <!-- Encabezado -->
     <header>
         <div class="logo">
             Kairos Providence
@@ -370,6 +361,7 @@
         </nav>
     </header>
 
+    <!-- Hero -->
     <section class="hero">
         <h1>Kairos Providence, S.C.</h1>
         <p class="tagline">Propósito &bull; Paciencia &bull; Estrategia &bull; Justicia</p>
@@ -379,6 +371,7 @@
         <a href="#contacto" class="btn-gold">Consulta Institucional</a>
     </section>
 
+    <!-- Misión y Visión -->
     <section id="filosofia">
         <h2 class="section-title">Nuestra Filosofía</h2>
         <p class="section-subtitle">Los fundamentos institucionales que orientan el ejercicio profesional de nuestra firma.</p>
@@ -399,11 +392,13 @@
         </div>
     </section>
 
+    <!-- Áreas de Práctica -->
     <section id="practicas" style="background-color: #121215;">
         <h2 class="section-title">Áreas de Práctica</h2>
         <p class="section-subtitle">Haz clic en cada área para consultar al especialista titular.</p>
 
-        <div class="flex-practices">
+        <div class="grid-practices">
+            <!-- Derecho Corporativo -->
             <div class="card-practice" onclick="toggleCard(this)">
                 <h3>Derecho Corporativo</h3>
                 <p>Blindaje institucional, gobierno corporativo, estructuración de negocios y auditoría contractual estratégica.</p>
@@ -415,6 +410,7 @@
                 </div>
             </div>
 
+            <!-- Derecho Laboral -->
             <div class="card-practice" onclick="toggleCard(this)">
                 <h3>Derecho Laboral</h3>
                 <p>Prevención de contingencias patronales, contratos ejecutivos, gestión de relaciones de trabajo y litigio laboral.</p>
@@ -426,6 +422,7 @@
                 </div>
             </div>
 
+            <!-- Derecho Bursátil -->
             <div class="card-practice" onclick="toggleCard(this)">
                 <h3>Derecho Bursátil</h3>
                 <p>Cumplimiento regulatorio, instrumentos de financiamiento y asesoría integral ante autoridades del sector financiero.</p>
@@ -437,6 +434,7 @@
                 </div>
             </div>
 
+            <!-- Derecho Penal -->
             <div class="card-practice" onclick="toggleCard(this)">
                 <h3>Derecho Penal</h3>
                 <p>Defensa técnica y patrocinio de víctimas en el sistema acusatorio con rigor procesal y estricta confidencialidad.</p>
@@ -448,7 +446,8 @@
                 </div>
             </div>
 
-            <div class="card-practice card-centered" onclick="toggleCard(this)">
+            <!-- Derecho Familiar -->
+            <div class="card-practice" onclick="toggleCard(this)">
                 <h3>Derecho Familiar</h3>
                 <p>Protección del patrimonio personal, sucesiones y resolución discreta de controversias familiares complejas.</p>
                 <span class="click-hint">&#9656; Clic para ver datos de la Licenciada</span>
@@ -461,6 +460,7 @@
         </div>
     </section>
 
+    <!-- La Firma / Pilares -->
     <section id="firma">
         <div class="about-container">
             <div class="about-text">
@@ -483,6 +483,7 @@
         </div>
     </section>
 
+    <!-- Footer -->
     <footer id="contacto">
         <p class="footer-logo">KAIROS PROVIDENCE, S.C.</p>
         <p>Servicios Profesionales de Asesoría y Representación Jurídica</p>
@@ -494,16 +495,19 @@
         <p style="margin-top: 15px; color: #666;">&copy; 2026 Kairos Providence, S.C. Todos los derechos reservados.</p>
     </footer>
 
+    <!-- Script de Interacción -->
     <script>
         function toggleCard(card) {
             const isActive = card.classList.contains('active');
             
+            // Opcional: Cerrar otras tarjetas abiertas
             document.querySelectorAll('.card-practice').forEach(c => {
                 c.classList.remove('active');
                 const hint = c.querySelector('.click-hint');
                 if (hint) hint.innerHTML = '&#9656; Clic para ver datos del Especialista';
             });
 
+            // Abrir la tarjeta actual si no estaba activa
             if (!isActive) {
                 card.classList.add('active');
                 const hint = card.querySelector('.click-hint');
