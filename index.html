@@ -188,12 +188,12 @@
             text-align: justify;
         }
 
-        /* Grilla de Áreas de Práctica con Centrado Especial */
+        /* Grilla de Áreas de Práctica (2 Columnas Estándar) */
         .grid-practices {
             display: grid;
-            grid-template-columns: repeat(6, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 25px;
-            max-width: 1100px;
+            max-width: 1000px;
             margin: 0 auto;
         }
 
@@ -205,12 +205,14 @@
             cursor: pointer;
             position: relative;
             user-select: none;
-            grid-column: span 3; /* Cada recuadro ocupa la mitad (3 de 6 columnas) */
         }
 
-        /* El quinto recuadro (Derecho Familiar) se centra en la siguiente fila */
+        /* Exclusivo para la quinta tarjeta: Derecho Familiar centrado */
         .card-practice.card-centered {
-            grid-column: 2 / span 4; /* Se ubica en el centro (ocupa de la columna 2 a la 5) */
+            grid-column: 1 / -1;
+            justify-self: center;
+            width: 100%;
+            max-width: 487px; /* Mismo ancho estándar que las de arriba */
         }
 
         .card-practice:hover {
@@ -342,13 +344,13 @@
             margin-bottom: 10px;
         }
 
-        /* Responsivo para celulares y tabletas */
-        @media (max-width: 850px) {
+        /* Adaptación para pantallas pequeñas */
+        @media (max-width: 768px) {
             .grid-practices {
                 grid-template-columns: 1fr;
             }
-            .card-practice, .card-practice.card-centered {
-                grid-column: span 1;
+            .card-practice.card-centered {
+                max-width: 100%;
             }
             .about-container {
                 grid-template-columns: 1fr;
@@ -457,7 +459,7 @@
                 </div>
             </div>
 
-            <!-- Derecho Familiar (Centrado en la segunda fila) -->
+            <!-- Derecho Familiar (Única tarjeta centrada abajo) -->
             <div class="card-practice card-centered" onclick="toggleCard(this)">
                 <h3>Derecho Familiar</h3>
                 <p>Protección del patrimonio personal, sucesiones y resolución discreta de controversias familiares complejas.</p>
