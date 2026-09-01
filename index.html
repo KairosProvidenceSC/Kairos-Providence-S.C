@@ -39,7 +39,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 8%;
+            padding: 20px 5%;
             background-color: rgba(15, 15, 17, 0.95);
             position: fixed;
             width: 100%;
@@ -132,7 +132,7 @@
 
         /* Secciones */
         section {
-            padding: 100px 5%;
+            padding: 100px 3%;
         }
 
         .section-title {
@@ -153,12 +153,14 @@
 
         /* Misión y Visión */
         .mv-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
+            display: flex;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .mv-card {
+            flex: 1;
             background-color: var(--bg-card);
             padding: 40px 30px;
             border-left: 3px solid var(--gold);
@@ -187,16 +189,20 @@
             text-align: justify;
         }
 
-        /* Grilla de Áreas de Práctica Forzada a 4 columnas en 1ra fila */
-        .grid-practices {
-            display: grid !important;
-            grid-template-columns: repeat(4, 1fr) !important;
-            gap: 15px !important;
-            max-width: 1400px;
+        /* Estructura Flexbox para forzar 4 tarjetas arriba y 1 abajo al centro */
+        .flex-practices {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            width: 100%;
+            max-width: 1600px;
             margin: 0 auto;
         }
 
         .card-practice {
+            flex: 1 1 22%; /* Obliga a que quepan 4 tarjetas por fila */
+            min-width: 200px;
             background-color: var(--bg-card);
             padding: 25px 15px;
             border-top: 2px solid var(--gold);
@@ -206,9 +212,10 @@
             user-select: none;
         }
 
-        /* Quinta tarjeta centrada abajo */
+        /* Quinta tarjeta: Centrada abajo */
         .card-practice.card-centered {
-            grid-column: 2 / span 2 !important;
+            flex: 0 1 30%; /* Tamaño medio centrado */
+            min-width: 250px;
         }
 
         .card-practice:hover {
@@ -219,21 +226,22 @@
         .card-practice h3 {
             font-family: var(--font-title);
             color: var(--ivory);
-            margin-bottom: 12px;
-            font-size: 1rem;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
         }
 
         .card-practice p {
             color: var(--text-muted);
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             font-weight: 300;
+            line-height: 1.4;
         }
 
         /* Indicador de interacción */
         .click-hint {
             display: block;
             margin-top: 15px;
-            font-size: 0.7rem;
+            font-size: 0.68rem;
             color: var(--gold);
             letter-spacing: 1px;
             text-transform: uppercase;
@@ -262,25 +270,25 @@
         .card-practice.active .specialist-info {
             max-height: 200px;
             opacity: 1;
-            margin-top: 20px;
-            padding-top: 15px;
+            margin-top: 15px;
+            padding-top: 12px;
             border-top-color: rgba(197, 160, 89, 0.3);
             transition: all 0.5s ease-in-out;
         }
 
         .specialist-info strong {
             color: var(--gold);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .specialist-info a {
             color: var(--ivory);
             text-decoration: none;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             display: block;
-            margin-top: 5px;
+            margin-top: 4px;
             transition: color 0.3s;
         }
 
@@ -290,10 +298,15 @@
 
         /* Nosotros / Pilares */
         .about-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
             gap: 50px;
             align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-text {
+            flex: 1;
         }
 
         .about-text h2 {
@@ -310,6 +323,7 @@
         }
 
         .pilars-list {
+            flex: 1;
             list-style: none;
         }
 
@@ -389,7 +403,7 @@
         <h2 class="section-title">Áreas de Práctica</h2>
         <p class="section-subtitle">Haz clic en cada área para consultar al especialista titular.</p>
 
-        <div class="grid-practices">
+        <div class="flex-practices">
             <div class="card-practice" onclick="toggleCard(this)">
                 <h3>Derecho Corporativo</h3>
                 <p>Blindaje institucional, gobierno corporativo, estructuración de negocios y auditoría contractual estratégica.</p>
