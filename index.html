@@ -188,11 +188,13 @@
             text-align: justify;
         }
 
-        /* Áreas de Práctica con interacción Clic */
+        /* Grilla de Áreas de Práctica con Centrado Especial */
         .grid-practices {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(6, 1fr);
             gap: 25px;
+            max-width: 1100px;
+            margin: 0 auto;
         }
 
         .card-practice {
@@ -203,6 +205,12 @@
             cursor: pointer;
             position: relative;
             user-select: none;
+            grid-column: span 3; /* Cada recuadro ocupa la mitad (3 de 6 columnas) */
+        }
+
+        /* El quinto recuadro (Derecho Familiar) se centra en la siguiente fila */
+        .card-practice.card-centered {
+            grid-column: 2 / span 4; /* Se ubica en el centro (ocupa de la columna 2 a la 5) */
         }
 
         .card-practice:hover {
@@ -223,7 +231,7 @@
             font-weight: 300;
         }
 
-        /* Indicador de interacción (Ver especialista) */
+        /* Indicador de interacción */
         .click-hint {
             display: block;
             margin-top: 15px;
@@ -235,7 +243,7 @@
             transition: opacity 0.3s;
         }
 
-        /* Información oculta por defecto */
+        /* Información oculta */
         .specialist-info {
             max-height: 0;
             opacity: 0;
@@ -246,7 +254,7 @@
             transition: all 0.5s cubic-bezier(0, 1, 0, 1);
         }
 
-        /* Clase activa al hacer CLIC */
+        /* Estado activo al hacer clic */
         .card-practice.active {
             border-top-color: var(--gold-hover);
             background-color: #222228;
@@ -260,10 +268,6 @@
             padding-top: 15px;
             border-top-color: rgba(197, 160, 89, 0.3);
             transition: all 0.5s ease-in-out;
-        }
-
-        .card-practice.active .click-hint {
-            content: "Ocultar especialista";
         }
 
         .specialist-info strong {
@@ -338,7 +342,14 @@
             margin-bottom: 10px;
         }
 
-        @media (max-width: 768px) {
+        /* Responsivo para celulares y tabletas */
+        @media (max-width: 850px) {
+            .grid-practices {
+                grid-template-columns: 1fr;
+            }
+            .card-practice, .card-practice.card-centered {
+                grid-column: span 1;
+            }
             .about-container {
                 grid-template-columns: 1fr;
             }
@@ -446,8 +457,8 @@
                 </div>
             </div>
 
-            <!-- Derecho Familiar -->
-            <center><div class="card-practice" onclick="toggleCard(this)">
+            <!-- Derecho Familiar (Centrado en la segunda fila) -->
+            <div class="card-practice card-centered" onclick="toggleCard(this)">
                 <h3>Derecho Familiar</h3>
                 <p>Protección del patrimonio personal, sucesiones y resolución discreta de controversias familiares complejas.</p>
                 <span class="click-hint">&#9656; Clic para ver datos de la Licenciada</span>
@@ -455,7 +466,7 @@
                     <strong>Lic. Cinthya Yaretzi Delgado Rosales</strong>
                     <a href="tel:7228833150" onclick="event.stopPropagation();">Tel: 722 883 3150</a>
                     <a href="mailto:cinthya.yaretzi.delgado@gmail.com" onclick="event.stopPropagation();">cinthya.yaretzi.delgado@gmail.com</a>
-                </div></center>
+                </div>
             </div>
         </div>
     </section>
@@ -500,14 +511,12 @@
         function toggleCard(card) {
             const isActive = card.classList.contains('active');
             
-            // Opcional: Cerrar otras tarjetas abiertas
             document.querySelectorAll('.card-practice').forEach(c => {
                 c.classList.remove('active');
                 const hint = c.querySelector('.click-hint');
                 if (hint) hint.innerHTML = '&#9656; Clic para ver datos del Especialista';
             });
 
-            // Abrir la tarjeta actual si no estaba activa
             if (!isActive) {
                 card.classList.add('active');
                 const hint = card.querySelector('.click-hint');
