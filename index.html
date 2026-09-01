@@ -40,7 +40,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 8%;
+            padding: 20px 5%;
             background-color: rgba(15, 15, 17, 0.95);
             position: fixed;
             width: 100%;
@@ -68,7 +68,7 @@
         nav a {
             color: var(--ivory);
             text-decoration: none;
-            margin-left: 30px;
+            margin-left: 25px;
             font-size: 0.85rem;
             letter-spacing: 1px;
             transition: color 0.3s;
@@ -133,7 +133,7 @@
 
         /* Secciones */
         section {
-            padding: 100px 8%;
+            padding: 100px 3%;
         }
 
         .section-title {
@@ -154,12 +154,14 @@
 
         /* Misión y Visión */
         .mv-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
+            display: flex;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .mv-card {
+            flex: 1;
             background-color: var(--bg-card);
             padding: 40px 30px;
             border-left: 3px solid var(--gold);
@@ -188,21 +190,33 @@
             text-align: justify;
         }
 
-        /* Áreas de Práctica con interacción Clic */
-        .grid-practices {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+        /* Estructura Flexbox para 4 tarjetas arriba y 1 abajo al centro */
+        .flex-practices {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            width: 100%;
+            max-width: 1600px;
+            margin: 0 auto;
         }
 
         .card-practice {
+            flex: 1 1 22%;
+            min-width: 200px;
             background-color: var(--bg-card);
-            padding: 35px 25px;
+            padding: 25px 15px;
             border-top: 2px solid var(--gold);
             transition: all 0.4s ease;
             cursor: pointer;
             position: relative;
             user-select: none;
+        }
+
+        /* Quinta tarjeta: Centrada abajo */
+        .card-practice.card-centered {
+            flex: 0 1 30%;
+            min-width: 250px;
         }
 
         .card-practice:hover {
@@ -213,21 +227,22 @@
         .card-practice h3 {
             font-family: var(--font-title);
             color: var(--ivory);
-            margin-bottom: 15px;
-            font-size: 1.1rem;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
         }
 
         .card-practice p {
             color: var(--text-muted);
-            font-size: 0.85rem;
+            font-size: 0.78rem;
             font-weight: 300;
+            line-height: 1.4;
         }
 
-        /* Indicador de interacción (Ver especialista) */
+        /* Indicador de interacción */
         .click-hint {
             display: block;
             margin-top: 15px;
-            font-size: 0.75rem;
+            font-size: 0.68rem;
             color: var(--gold);
             letter-spacing: 1px;
             text-transform: uppercase;
@@ -235,7 +250,7 @@
             transition: opacity 0.3s;
         }
 
-        /* Información oculta por defecto */
+        /* Información oculta */
         .specialist-info {
             max-height: 0;
             opacity: 0;
@@ -246,7 +261,7 @@
             transition: all 0.5s cubic-bezier(0, 1, 0, 1);
         }
 
-        /* Clase activa al hacer CLIC */
+        /* Estado activo al hacer clic */
         .card-practice.active {
             border-top-color: var(--gold-hover);
             background-color: #222228;
@@ -256,29 +271,25 @@
         .card-practice.active .specialist-info {
             max-height: 200px;
             opacity: 1;
-            margin-top: 20px;
-            padding-top: 15px;
+            margin-top: 15px;
+            padding-top: 12px;
             border-top-color: rgba(197, 160, 89, 0.3);
             transition: all 0.5s ease-in-out;
         }
 
-        .card-practice.active .click-hint {
-            content: "Ocultar especialista";
-        }
-
         .specialist-info strong {
             color: var(--gold);
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .specialist-info a {
             color: var(--ivory);
             text-decoration: none;
-            font-size: 0.82rem;
+            font-size: 0.75rem;
             display: block;
-            margin-top: 5px;
+            margin-top: 4px;
             transition: color 0.3s;
         }
 
@@ -288,10 +299,15 @@
 
         /* Nosotros / Pilares */
         .about-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
             gap: 50px;
             align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-text {
+            flex: 1;
         }
 
         .about-text h2 {
@@ -308,6 +324,7 @@
         }
 
         .pilars-list {
+            flex: 1;
             list-style: none;
         }
 
@@ -337,12 +354,6 @@
             font-size: 1.2rem;
             margin-bottom: 10px;
         }
-
-        @media (max-width: 768px) {
-            .about-container {
-                grid-template-columns: 1fr;
-            }
-        }
     </style>
 </head>
 <body>
@@ -357,6 +368,7 @@
             <a href="#filosofia">Misión & Visión</a>
             <a href="#practicas">Áreas de Práctica</a>
             <a href="#firma">La Firma</a>
+            <a href="https://www.instagram.com/kairosprovidencesc?igsi=ajQ5NTBkNzkxNzg3" target="_blank" rel="noopener noreferrer">Instagram</a>
             <a href="#contacto">Contacto</a>
         </nav>
     </header>
@@ -368,7 +380,7 @@
         <p class="description">
             Transformamos la complejidad del entorno legal en una guía cercana, estratégica y profesional que protege perpetuamente los intereses y el patrimonio de nuestros clientes.
         </p>
-        <a href="#contacto" class="btn-gold">Consulta Institucional</a>
+        <a href="https://www.instagram.com/kairosprovidencesc?igsi=ajQ5NTBkNzkxNzg3" target="_blank" rel="noopener noreferrer" class="btn-gold">Contacto en Instagram</a>
     </section>
 
     <!-- Misión y Visión -->
@@ -397,8 +409,8 @@
         <h2 class="section-title">Áreas de Práctica</h2>
         <p class="section-subtitle">Haz clic en cada área para consultar al especialista titular.</p>
 
-        <div class="grid-practices">
-            <!-- Derecho Corporativo -->
+        <div class="flex-practices">
+            <!-- 4 Tarjetas Fila 1 -->
             <div class="card-practice" onclick="toggleCard(this)">
                 <h3>Derecho Corporativo</h3>
                 <p>Blindaje institucional, gobierno corporativo, estructuración de negocios y auditoría contractual estratégica.</p>
@@ -410,7 +422,6 @@
                 </div>
             </div>
 
-            <!-- Derecho Laboral -->
             <div class="card-practice" onclick="toggleCard(this)">
                 <h3>Derecho Laboral</h3>
                 <p>Prevención de contingencias patronales, contratos ejecutivos, gestión de relaciones de trabajo y litigio laboral.</p>
@@ -422,7 +433,6 @@
                 </div>
             </div>
 
-            <!-- Derecho Bursátil -->
             <div class="card-practice" onclick="toggleCard(this)">
                 <h3>Derecho Bursátil</h3>
                 <p>Cumplimiento regulatorio, instrumentos de financiamiento y asesoría integral ante autoridades del sector financiero.</p>
@@ -434,7 +444,6 @@
                 </div>
             </div>
 
-            <!-- Derecho Penal -->
             <div class="card-practice" onclick="toggleCard(this)">
                 <h3>Derecho Penal</h3>
                 <p>Defensa técnica y patrocinio de víctimas en el sistema acusatorio con rigor procesal y estricta confidencialidad.</p>
@@ -446,8 +455,8 @@
                 </div>
             </div>
 
-            <!-- Derecho Familiar -->
-            <div class="card-practice" onclick="toggleCard(this)">
+            <!-- Tarjeta Fila 2 (Centrada) -->
+            <div class="card-practice card-centered" onclick="toggleCard(this)">
                 <h3>Derecho Familiar</h3>
                 <p>Protección del patrimonio personal, sucesiones y resolución discreta de controversias familiares complejas.</p>
                 <span class="click-hint">&#9656; Clic para ver datos de la Licenciada</span>
@@ -500,14 +509,12 @@
         function toggleCard(card) {
             const isActive = card.classList.contains('active');
             
-            // Opcional: Cerrar otras tarjetas abiertas
             document.querySelectorAll('.card-practice').forEach(c => {
                 c.classList.remove('active');
                 const hint = c.querySelector('.click-hint');
                 if (hint) hint.innerHTML = '&#9656; Clic para ver datos del Especialista';
             });
 
-            // Abrir la tarjeta actual si no estaba activa
             if (!isActive) {
                 card.classList.add('active');
                 const hint = card.querySelector('.click-hint');
