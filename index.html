@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kairos Providence, S.C. | Firma Jurídica</title>
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
@@ -133,7 +132,7 @@
 
         /* Secciones */
         section {
-            padding: 100px 8%;
+            padding: 100px 5%;
         }
 
         .section-title {
@@ -188,18 +187,18 @@
             text-align: justify;
         }
 
-        /* Grilla de Áreas de Práctica (4 Columnas en la 1ra fila) */
+        /* Grilla de Áreas de Práctica Forzada a 4 columnas en 1ra fila */
         .grid-practices {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            max-width: 1280px;
+            display: grid !important;
+            grid-template-columns: repeat(4, 1fr) !important;
+            gap: 15px !important;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
         .card-practice {
             background-color: var(--bg-card);
-            padding: 30px 20px;
+            padding: 25px 15px;
             border-top: 2px solid var(--gold);
             transition: all 0.4s ease;
             cursor: pointer;
@@ -207,9 +206,9 @@
             user-select: none;
         }
 
-        /* Derecho Familiar: Ocupa las columnas centrales en la segunda fila */
+        /* Quinta tarjeta centrada abajo */
         .card-practice.card-centered {
-            grid-column: 2 / span 2;
+            grid-column: 2 / span 2 !important;
         }
 
         .card-practice:hover {
@@ -220,13 +219,13 @@
         .card-practice h3 {
             font-family: var(--font-title);
             color: var(--ivory);
-            margin-bottom: 15px;
-            font-size: 1.05rem;
+            margin-bottom: 12px;
+            font-size: 1rem;
         }
 
         .card-practice p {
             color: var(--text-muted);
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 300;
         }
 
@@ -234,7 +233,7 @@
         .click-hint {
             display: block;
             margin-top: 15px;
-            font-size: 0.72rem;
+            font-size: 0.7rem;
             color: var(--gold);
             letter-spacing: 1px;
             text-transform: uppercase;
@@ -271,7 +270,7 @@
 
         .specialist-info strong {
             color: var(--gold);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             display: block;
             margin-bottom: 8px;
         }
@@ -279,7 +278,7 @@
         .specialist-info a {
             color: var(--ivory);
             text-decoration: none;
-            font-size: 0.82rem;
+            font-size: 0.8rem;
             display: block;
             margin-top: 5px;
             transition: color 0.3s;
@@ -340,32 +339,10 @@
             font-size: 1.2rem;
             margin-bottom: 10px;
         }
-
-        /* Adaptación responsiva para celulares y tablets */
-        @media (max-width: 1024px) {
-            .grid-practices {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .card-practice.card-centered {
-                grid-column: 1 / -1;
-                justify-self: center;
-                width: 100%;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .grid-practices {
-                grid-template-columns: 1fr;
-            }
-            .about-container {
-                grid-template-columns: 1fr;
-            }
-        }
     </style>
 </head>
 <body>
 
-    <!-- Encabezado -->
     <header>
         <div class="logo">
             Kairos Providence
@@ -379,7 +356,6 @@
         </nav>
     </header>
 
-    <!-- Hero -->
     <section class="hero">
         <h1>Kairos Providence, S.C.</h1>
         <p class="tagline">Propósito &bull; Paciencia &bull; Estrategia &bull; Justicia</p>
@@ -389,7 +365,6 @@
         <a href="#contacto" class="btn-gold">Consulta Institucional</a>
     </section>
 
-    <!-- Misión y Visión -->
     <section id="filosofia">
         <h2 class="section-title">Nuestra Filosofía</h2>
         <p class="section-subtitle">Los fundamentos institucionales que orientan el ejercicio profesional de nuestra firma.</p>
@@ -410,13 +385,11 @@
         </div>
     </section>
 
-    <!-- Áreas de Práctica -->
     <section id="practicas" style="background-color: #121215;">
         <h2 class="section-title">Áreas de Práctica</h2>
         <p class="section-subtitle">Haz clic en cada área para consultar al especialista titular.</p>
 
         <div class="grid-practices">
-            <!-- Primera Fila: 4 Áreas -->
             <div class="card-practice" onclick="toggleCard(this)">
                 <h3>Derecho Corporativo</h3>
                 <p>Blindaje institucional, gobierno corporativo, estructuración de negocios y auditoría contractual estratégica.</p>
@@ -461,7 +434,6 @@
                 </div>
             </div>
 
-            <!-- Segunda Fila: Derecho Familiar centrado en el medio -->
             <div class="card-practice card-centered" onclick="toggleCard(this)">
                 <h3>Derecho Familiar</h3>
                 <p>Protección del patrimonio personal, sucesiones y resolución discreta de controversias familiares complejas.</p>
@@ -475,7 +447,6 @@
         </div>
     </section>
 
-    <!-- La Firma / Pilares -->
     <section id="firma">
         <div class="about-container">
             <div class="about-text">
@@ -498,7 +469,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer id="contacto">
         <p class="footer-logo">KAIROS PROVIDENCE, S.C.</p>
         <p>Servicios Profesionales de Asesoría y Representación Jurídica</p>
@@ -510,7 +480,6 @@
         <p style="margin-top: 15px; color: #666;">&copy; 2026 Kairos Providence, S.C. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- Script de Interacción -->
     <script>
         function toggleCard(card) {
             const isActive = card.classList.contains('active');
