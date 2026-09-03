@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kairos Providence, S.C. | Firma Jurídica</title>
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
@@ -39,7 +40,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 5%;
+            padding: 15px 5%;
             background-color: rgba(15, 15, 17, 0.95);
             position: fixed;
             width: 100%;
@@ -48,20 +49,36 @@
             border-bottom: 1px solid rgba(197, 160, 89, 0.2);
         }
 
-        .logo {
+        /* Contenedor del Logo + Nombre */
+        .brand-container {
+            display: flex;
+            align-items: center;
+            gap: 15px; /* Espacio entre el logo y el texto */
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 45px; /* Ajusta la altura de la imagen según lo necesites */
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo-text {
             font-family: var(--font-title);
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             color: var(--gold);
             letter-spacing: 2px;
             text-transform: uppercase;
             font-weight: 700;
+            line-height: 1.1;
         }
 
-        .logo span {
-            font-size: 0.8rem;
+        .logo-text span {
+            font-size: 0.75rem;
             display: block;
             color: var(--ivory);
-            letter-spacing: 4px;
+            letter-spacing: 3px;
+            font-weight: 400;
         }
 
         nav a {
@@ -407,11 +424,16 @@
 </head>
 <body>
 
+    <!-- Encabezado con Logotipo a la izquierda del Nombre -->
     <header>
-        <div class="logo">
-            Kairos Providence
-            <span>Sociedad Civil</span>
-        </div>
+        <a href="#" class="brand-container">
+            <!-- RUTA ACTUALIZADA A logo.jpg -->
+            <img src="logo.jpg" alt="Logotipo Kairos Providence" class="logo-img">
+            <div class="logo-text">
+                Kairos Providence
+                <span>Sociedad Civil</span>
+            </div>
+        </a>
         <nav>
             <a href="#filosofia">Misión & Visión</a>
             <a href="#valores">Valores</a>
@@ -422,6 +444,7 @@
         </nav>
     </header>
 
+    <!-- Hero -->
     <section class="hero">
         <h1>Kairos Providence, S.C.</h1>
         <p class="tagline">Propósito &bull; Paciencia &bull; Estrategia &bull; Justicia</p>
@@ -431,6 +454,7 @@
         <a href="#contacto" class="btn-gold">Consulta Institucional</a>
     </section>
 
+    <!-- Misión y Visión -->
     <section id="filosofia">
         <h2 class="section-title">Nuestra Filosofía</h2>
         <p class="section-subtitle">Los fundamentos institucionales que orientan el ejercicio profesional de nuestra firma.</p>
@@ -451,11 +475,13 @@
         </div>
     </section>
 
+    <!-- Sección de Valores -->
     <section id="valores" style="background-color: #121215;">
         <h2 class="section-title">Principios Institucionales</h2>
         <p class="section-subtitle">La arquitectura ética y los valores fundamentales sobre los que erigimos nuestra práctica jurídica.</p>
 
         <div class="valores-wrapper">
+            <!-- Bloque 1: Valores Fundamentales -->
             <div class="valores-block">
                 <h3>Valores Fundamentales</h3>
                 <div class="valores-grid">
@@ -470,6 +496,7 @@
                 </div>
             </div>
 
+            <!-- Bloque 2: Valores de Sustento -->
             <div class="valores-block">
                 <h3>Valores que los Sustentan</h3>
                 <div class="valores-grid">
@@ -486,6 +513,7 @@
         </div>
     </section>
 
+    <!-- Áreas de Práctica -->
     <section id="practicas">
         <h2 class="section-title">Áreas de Práctica</h2>
         <p class="section-subtitle">Haz clic en cada área para consultar al especialista titular.</p>
@@ -548,6 +576,7 @@
         </div>
     </section>
 
+    <!-- La Firma -->
     <section id="firma" style="background-color: #121215;">
         <div class="about-container">
             <div class="about-text">
@@ -570,6 +599,7 @@
         </div>
     </section>
 
+    <!-- Footer -->
     <footer id="contacto">
         <p class="footer-logo">KAIROS PROVIDENCE, S.C.</p>
         <p>Servicios Profesionales de Asesoría y Representación Jurídica</p>
@@ -581,6 +611,7 @@
         <p style="margin-top: 15px; color: #666;">&copy; 2026 Kairos Providence, S.C. Todos los derechos reservados.</p>
     </footer>
 
+    <!-- Script de Interacción -->
     <script>
         function toggleCard(card) {
             const isActive = card.classList.contains('active');
