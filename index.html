@@ -206,7 +206,6 @@
             margin-bottom: 25px;
             text-align: center;
             text-transform: uppercase;
-            position: relative;
         }
 
         .valores-grid {
@@ -371,6 +370,21 @@
             color: var(--text-muted);
             margin-bottom: 20px;
             font-weight: 300;
+        }
+
+        .pilars-list {
+            flex: 1;
+            list-style: none;
+        }
+
+        .pilars-list li {
+            margin-bottom: 15px;
+            color: var(--ivory);
+            font-size: 0.9rem;
+        }
+
+        .pilars-list strong {
+            color: var(--gold);
         }
 
         /* Footer */
@@ -545,6 +559,14 @@
                     Nos distinguimos por actuar con la prudencia necesaria y el rigor académico exigido para generar la tranquilidad y certeza que nuestros asesorados requieren.
                 </p>
             </div>
+            <div>
+                <ul class="pilars-list">
+                    <li><strong>Propósito:</strong> Generar un impacto positivo, transparente y duradero en cada caso.</li>
+                    <li><strong>Paciencia:</strong> Comprender que la oportunidad adecuada marca la diferencia en el proceso.</li>
+                    <li><strong>Estrategia:</strong> Analizar y planificar la mejor ruta jurídica para alcanzar resultados eficientes.</li>
+                    <li><strong>Justicia:</strong> Defender derechos fundamentales con ética y profesionalismo.</li>
+                </ul>
+            </div>
         </div>
     </section>
 
@@ -558,3 +580,23 @@
         </p>
         <p style="margin-top: 15px; color: #666;">&copy; 2026 Kairos Providence, S.C. Todos los derechos reservados.</p>
     </footer>
+
+    <script>
+        function toggleCard(card) {
+            const isActive = card.classList.contains('active');
+            
+            document.querySelectorAll('.card-practice').forEach(c => {
+                c.classList.remove('active');
+                const hint = c.querySelector('.click-hint');
+                if (hint) hint.innerHTML = '&#9656; Clic para ver datos del Especialista';
+            });
+
+            if (!isActive) {
+                card.classList.add('active');
+                const hint = card.querySelector('.click-hint');
+                if (hint) hint.innerHTML = '&#9662; Ocultar datos';
+            }
+        }
+    </script>
+</body>
+</html>
