@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kairos Providence, S.C. | Firma Jurídica</title>
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
@@ -190,7 +189,62 @@
             text-align: justify;
         }
 
-        /* Estructura Flexbox para 4 tarjetas arriba y 1 abajo al centro */
+        /* Sección de Valores Estructurada */
+        .valores-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+        }
+
+        .valores-block h3 {
+            font-family: var(--font-title);
+            color: var(--gold);
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            text-align: center;
+            text-transform: uppercase;
+            position: relative;
+        }
+
+        .valores-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .valor-card {
+            background-color: var(--bg-card);
+            padding: 20px;
+            border-top: 2px solid var(--gold);
+            text-align: center;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .valor-card:hover {
+            transform: translateY(-3px);
+            background-color: #1F1F24;
+        }
+
+        .valor-card h4 {
+            font-family: var(--font-title);
+            color: var(--ivory);
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .valor-card.sustento {
+            border-top: 1px solid var(--text-muted);
+            border-bottom: 2px solid var(--gold);
+        }
+
+        .valor-card.sustento h4 {
+            color: var(--gold-hover);
+        }
+
+        /* Áreas de Práctica */
         .flex-practices {
             display: flex;
             flex-wrap: wrap;
@@ -213,7 +267,6 @@
             user-select: none;
         }
 
-        /* Quinta tarjeta: Centrada abajo */
         .card-practice.card-centered {
             flex: 0 1 30%;
             min-width: 250px;
@@ -238,7 +291,6 @@
             line-height: 1.4;
         }
 
-        /* Indicador de interacción */
         .click-hint {
             display: block;
             margin-top: 15px;
@@ -250,7 +302,6 @@
             transition: opacity 0.3s;
         }
 
-        /* Información oculta */
         .specialist-info {
             max-height: 0;
             opacity: 0;
@@ -261,7 +312,6 @@
             transition: all 0.5s cubic-bezier(0, 1, 0, 1);
         }
 
-        /* Estado activo al hacer clic */
         .card-practice.active {
             border-top-color: var(--gold-hover);
             background-color: #222228;
@@ -323,21 +373,6 @@
             font-weight: 300;
         }
 
-        .pilars-list {
-            flex: 1;
-            list-style: none;
-        }
-
-        .pilars-list li {
-            margin-bottom: 15px;
-            color: var(--ivory);
-            font-size: 0.9rem;
-        }
-
-        .pilars-list strong {
-            color: var(--gold);
-        }
-
         /* Footer */
         footer {
             background-color: #08080A;
@@ -358,7 +393,6 @@
 </head>
 <body>
 
-    <!-- Encabezado -->
     <header>
         <div class="logo">
             Kairos Providence
@@ -366,6 +400,7 @@
         </div>
         <nav>
             <a href="#filosofia">Misión & Visión</a>
+            <a href="#valores">Valores</a>
             <a href="#practicas">Áreas de Práctica</a>
             <a href="#firma">La Firma</a>
             <a href="https://www.instagram.com/kairosprovidencesc?igsi=ajQ5NTBkNzkxNzg3" target="_blank" rel="noopener noreferrer">Instagram</a>
@@ -373,7 +408,6 @@
         </nav>
     </header>
 
-    <!-- Hero -->
     <section class="hero">
         <h1>Kairos Providence, S.C.</h1>
         <p class="tagline">Propósito &bull; Paciencia &bull; Estrategia &bull; Justicia</p>
@@ -383,7 +417,6 @@
         <a href="#contacto" class="btn-gold">Consulta Institucional</a>
     </section>
 
-    <!-- Misión y Visión -->
     <section id="filosofia">
         <h2 class="section-title">Nuestra Filosofía</h2>
         <p class="section-subtitle">Los fundamentos institucionales que orientan el ejercicio profesional de nuestra firma.</p>
@@ -404,13 +437,46 @@
         </div>
     </section>
 
-    <!-- Áreas de Práctica -->
-    <section id="practicas" style="background-color: #121215;">
+    <section id="valores" style="background-color: #121215;">
+        <h2 class="section-title">Principios Institucionales</h2>
+        <p class="section-subtitle">La arquitectura ética y los valores fundamentales sobre los que erigimos nuestra práctica jurídica.</p>
+
+        <div class="valores-wrapper">
+            <div class="valores-block">
+                <h3>Valores Fundamentales</h3>
+                <div class="valores-grid">
+                    <div class="valor-card"><h4>Propósito</h4></div>
+                    <div class="valor-card"><h4>Paciencia</h4></div>
+                    <div class="valor-card"><h4>Lealtad</h4></div>
+                    <div class="valor-card"><h4>Protección</h4></div>
+                    <div class="valor-card"><h4>Estrategia</h4></div>
+                    <div class="valor-card"><h4>Justicia</h4></div>
+                    <div class="valor-card"><h4>Equidad</h4></div>
+                    <div class="valor-card"><h4>Sentido Humano</h4></div>
+                </div>
+            </div>
+
+            <div class="valores-block">
+                <h3>Valores que los Sustentan</h3>
+                <div class="valores-grid">
+                    <div class="valor-card sustento"><h4>Ética</h4></div>
+                    <div class="valor-card sustento"><h4>Prudencia</h4></div>
+                    <div class="valor-card sustento"><h4>Compromiso</h4></div>
+                    <div class="valor-card sustento"><h4>Confianza</h4></div>
+                    <div class="valor-card sustento"><h4>Profesionalismo</h4></div>
+                    <div class="valor-card sustento"><h4>Empatía</h4></div>
+                    <div class="valor-card sustento"><h4>Transparencia</h4></div>
+                    <div class="valor-card sustento"><h4>Claridad</h4></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="practicas">
         <h2 class="section-title">Áreas de Práctica</h2>
         <p class="section-subtitle">Haz clic en cada área para consultar al especialista titular.</p>
 
         <div class="flex-practices">
-            <!-- 4 Tarjetas Fila 1 -->
             <div class="card-practice" onclick="toggleCard(this)">
                 <h3>Derecho Corporativo</h3>
                 <p>Blindaje institucional, gobierno corporativo, estructuración de negocios y auditoría contractual estratégica.</p>
@@ -434,8 +500,8 @@
             </div>
 
             <div class="card-practice" onclick="toggleCard(this)">
-                <h3>Derecho de Propiedad Intelectual</h3>
-                <p>Derechos de Autor (obras y software) y Propiedad Industrial (marcas, patentes y secretos comerciales).</p>
+                <h3>Derecho Bursátil</h3>
+                <p>Cumplimiento regulatorio, instrumentos de financiamiento y asesoría integral ante autoridades del sector financiero.</p>
                 <span class="click-hint">&#9656; Clic para ver datos de la Licenciada</span>
                 <div class="specialist-info">
                     <strong>Lic. Karina Peña Gonzales</strong>
@@ -455,7 +521,6 @@
                 </div>
             </div>
 
-            <!-- Tarjeta Fila 2 (Centrada) -->
             <div class="card-practice card-centered" onclick="toggleCard(this)">
                 <h3>Derecho Familiar</h3>
                 <p>Protección del patrimonio personal, sucesiones y resolución discreta de controversias familiares complejas.</p>
@@ -469,8 +534,7 @@
         </div>
     </section>
 
-    <!-- La Firma / Pilares -->
-    <section id="firma">
+    <section id="firma" style="background-color: #121215;">
         <div class="about-container">
             <div class="about-text">
                 <h2>El Momento Oportuno para Actuar</h2>
@@ -481,18 +545,9 @@
                     Nos distinguimos por actuar con la prudencia necesaria y el rigor académico exigido para generar la tranquilidad y certeza que nuestros asesorados requieren.
                 </p>
             </div>
-            <div>
-                <ul class="pilars-list">
-                    <li><strong>Propósito:</strong> Generar un impacto positivo, transparente y duradero en cada caso.</li>
-                    <li><strong>Paciencia:</strong> Comprender que la oportunidad adecuada marca la diferencia en el proceso.</li>
-                    <li><strong>Estrategia:</strong> Analizar y planificar la mejor ruta jurídica para alcanzar resultados eficientes.</li>
-                    <li><strong>Justicia:</strong> Defender derechos fundamentales con ética y profesionalismo.</li>
-                </ul>
-            </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer id="contacto">
         <p class="footer-logo">KAIROS PROVIDENCE, S.C.</p>
         <p>Servicios Profesionales de Asesoría y Representación Jurídica</p>
@@ -503,24 +558,3 @@
         </p>
         <p style="margin-top: 15px; color: #666;">&copy; 2026 Kairos Providence, S.C. Todos los derechos reservados.</p>
     </footer>
-
-    <!-- Script de Interacción -->
-    <script>
-        function toggleCard(card) {
-            const isActive = card.classList.contains('active');
-            
-            document.querySelectorAll('.card-practice').forEach(c => {
-                c.classList.remove('active');
-                const hint = c.querySelector('.click-hint');
-                if (hint) hint.innerHTML = '&#9656; Clic para ver datos del Especialista';
-            });
-
-            if (!isActive) {
-                card.classList.add('active');
-                const hint = card.querySelector('.click-hint');
-                if (hint) hint.innerHTML = '&#9662; Ocultar datos';
-            }
-        }
-    </script>
-</body>
-</html>
